@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio de Revisão 1</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body id="body">
+        <header>        
+                <h1>Cartão</h1>
+        </header>
+        <main>
+                <div class="form">
+                        <label for="nome">Nome</label>
+                        <input id="nome" type="text" max="255" min="1" placeholder="Ex: Heniq" oninput="atualizarNome()" required>
+                        <label for="cargo">Cargo</label>
+                        <input id=cargo type="text" max="255" min="1" placeholder="Ex: Diretor" oninput="atualizarCargo()" required>
+                        <label for="cor">Cor</label>
+                        <select id="cor" onclick="atualizarCor()" required>
+                                <option value="">Selecione alguma cor</option>
+                                <option value="blue">Blue</option>
+                                <option value="red">Vermelho</option>
+                                <option value="green">Verde</option>
+                                <option value="beige">Bege</option>
+                                <option value="purple">roxo</option>
+                        </select>
+                </div>
+                <div id="cartao">
+                        <p>Nome:</p>
+                        <p id="cartaonome"></p>
+                        <p>Cargo:</p>
+                        <p id="cartaocargo"></p>    
+                </div>
+        </main>
+        <footer>
+                <p>Feito por Henrique Motta - 3-DEVT</p>
+        </footer>
+</body>
+<script src="revisao2.js"></script>
+</html>

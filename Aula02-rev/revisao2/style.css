@@ -1,0 +1,77 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+header ,footer {
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+    height: 75px;
+    background-color: beige ;
+    box-shadow: 5px 0px 5px 0 black;
+}
+
+main {
+    position: relative;
+    min-height: 800px  ;
+    flex-direction: column;
+
+}
+#cartao {
+    position: absolute;
+    right: 0;
+    background-color: white;
+    width: 400px;
+    height: 200px;
+    top: 300px;
+    bottom: 0px;
+    margin-right: 100px;
+    border-radius: 5px;
+    border-color: black;
+    border-width: 1px;
+    border-style: solid;
+    font-weight: bolder;
+    font-size:20px;
+    text-align: center;
+    padding: 20px;
+    }
+
+.form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 500px;
+    background-color: beige;
+    flex-direction: column;
+    width: 300px;
+    box-shadow: 5px 0px 5px 0 gray;
+    top:100px;
+    bottom: 100px;
+    position: absolute;
+    margin-left: 100px;
+    gap: 10px;
+    border-radius: 5px;
+    border-color: black;
+    border-width: 1px;
+    border-style: solid;
+}
+
+input {
+    height: 40px;
+    width:  200px;
+    border-radius: 5px;
+    border-color: black;
+    border-width: 1px;
+    border-style: solid;
+    box-shadow: 1px 2px 2px 0 gray;
+}
+
+select {
+    height: 40px;
+    width:  200px;
+    border-radius: 5px;
+    border-color: black;
+    border-width: 1px;
+    border-style: solid;
+    box-shadow: 1px 2px 2px 0 gray;
+}
