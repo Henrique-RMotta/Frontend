@@ -1,10 +1,26 @@
+body {
+    min-height: 1200px;
+    width: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 .nome {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
     height: 600px;
     width: 800px;
     background-color: aquamarine;
+    gap: 10px;
 }
 
 .nome2 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
     height: 180px;
     width: 700px;
     background-color: burlywood;
@@ -12,6 +28,10 @@
 }
 
 .nome3 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
     height: 180px;
     width: 700px;
     background-color: chartreuse;
@@ -19,6 +39,10 @@
 }
 
 .nome4 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
     height: 180px;
     width: 700px;
     background-color: cadetblue;
@@ -30,4 +54,5 @@
     width: 90px;
     background-color: coral;
     border: 2px solid black;
+    
 }
