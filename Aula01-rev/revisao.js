@@ -67,7 +67,7 @@ function ex3 () {
 
 
 }
-
+ex3();
 function ex4() { 
     let diahoje = new Date();
     let diaev  = parseInt(prompt("dia"));
@@ -83,6 +83,21 @@ function ex4() {
     console.log(diaevento) 
     let tempodia = tempo/86400000             
     alert(Math.ceil(tempodia));
+
+    /* 
+    let datahoje = new Date()// pega a data atual 
+    let dataevento = new Data("2026-12-25")// exemplo natal de 2026 
+
+    // diferença em milissegundos 
+    let diferencaMs = dataEvento - dataHoje; 
+
+    // conversao:ms->segundos->minutos->horas->dias
+    let umdiaMs = 24 * 60 * 60 * 1000; 
+    let diasFaltando  = Math.ceil(diferencaMs/umDiams);
+
+    alert(`Faltam ${diasFaltando} dias para o compromisso`);
+
+    */
 
 }
 
