@@ -1,51 +1,48 @@
 body {
-    min-height: 1200px;
+    min-height: 100vh;
     width: auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: grid;
+    place-items: center;
 }
+
 .nome {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
     height: 600px;
     width: 800px;
     background-color: aquamarine;
+    display: grid;
+    grid-template: 1fr 1fr 1fr  / 1fr;
+    place-items: center;
 }
 
 .nome2 {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-evenly;
     height: 180px;
     width: 700px;
     background-color: burlywood;
     border: 2px solid black;
+    display: grid;
+    grid-template: 1fr/ 1fr 1fr 1fr;
+    place-items: center;
+    
 }
 
 .nome3 {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-evenly;
     height: 180px;
     width: 700px;
     background-color: chartreuse;
     border: 2px solid black;
+    display: grid;
+    grid-template: 1fr/ 1fr 1fr 1fr;
+    place-items: center;
 }
 
 .nome4 {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-evenly;
     height: 180px;
     width: 700px;
     background-color: cadetblue;
     border: 2px solid black;
+    display: grid;
+    grid-template: 1fr/ 1fr 1fr 1fr;
+    place-items: center;
 }
 
 .nome5 {
