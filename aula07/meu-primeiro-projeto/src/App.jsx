@@ -123,7 +123,7 @@ function App() {
         </tbody>
       </table>
 
-      <Perfil nome="heniq" turma="funcionario"/>
+      <Perfil nome="Motta" turma="3DEVT"/>
     </>
   )
 }
