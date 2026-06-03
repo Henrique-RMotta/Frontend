@@ -1,61 +1,97 @@
 <!doctype html>
-<html lang="en">
+<html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Dashboard</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
       crossorigin="anonymous"
     />
+    <style>
+      /* Sidebar fixa só em telas grandes */
+      @media (min-width: 992px) {
+        .sidebar {
+          min-height: calc(100vh - 66px);
+        }
+      }
+
+      /* Tabela com scroll horizontal em telas pequenas */
+      .table-responsive {
+        -webkit-overflow-scrolling: touch;
+      }
+
+      /* Ajuste do header em mobile */
+      .header-logo {
+        width: 130px;
+      }
+
+      @media (max-width: 575px) {
+        .header-logo {
+          width: 90px;
+        }
+      }
+    </style>
   </head>
   <body>
-    <header class="p-3 border-bottom text-bg-secondary">
-      <div class="container">
-        <div
-          class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start"
-        >
-          <a
-            href="/"
-            class="d-flex align-items-center mb-2 mb-lg-0 link-body-emphasis text-decoration-none"
+    <!-- HEADER -->
+    <header class="p-2 p-lg-3 border-bottom text-bg-secondary sticky-top">
+      <div class="container-fluid">
+        <div class="d-flex align-items-center justify-content-between gap-2">
+
+          <!-- Botão hambúrguer (visível só em mobile/tablet) -->
+          <button
+            class="btn btn-outline-light d-lg-none"
+            type="button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#sidebarOffcanvas"
+            aria-controls="sidebarOffcanvas"
+            aria-label="Abrir menu"
           >
-            <img src="/aula12/images.jpg" class="img-fluid me-5" style="width: 200px;" height="auto">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <!-- Logo -->
+          <a href="/" class="d-flex align-items-center text-decoration-none">
+            <img
+              src="/aula12/images.jpg"
+              class="img-fluid header-logo"
+              alt="Logo"
+              height="auto"
+            />
           </a>
-          <ul
-            class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0"
-          >
+
+          <!-- Nav links (visível só em desktop) -->
+          <ul class="nav col-lg-auto me-lg-auto mb-0 d-none d-lg-flex">
             <li>
-              <a href="#" class="nav-link px-2 link-secondary text-white"
-                >Overview</a
-              >
+              <a href="#" class="nav-link px-2 link-secondary text-white">Overview</a>
             </li>
             <li>
-              <a href="#" class="nav-link px-2 link-body-emphasis text-white"
-                >Inventory</a
-              >
+              <a href="#" class="nav-link px-2 text-white">Inventory</a>
             </li>
             <li>
-              <a href="#" class="nav-link px-2 link-body-emphasis text-white"
-                >Customers</a
-              >
+              <a href="#" class="nav-link px-2 text-white">Customers</a>
             </li>
             <li>
-              <a href="#" class="nav-link px-2 link-body-emphasi text-white"
-                >Products</a
-              >
+              <a href="#" class="nav-link px-2 text-white">Products</a>
             </li>
           </ul>
-          <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+
+          <!-- Busca (oculta em telas muito pequenas) -->
+          <div class="d-none d-sm-block">
             <input
               type="search"
-              class="form-control"
+              class="form-control form-control-sm"
               placeholder="Search..."
               aria-label="Search"
+              style="width: 180px;"
             />
-          </form>
-          <div class="dropdown text-end">
+          </div>
+
+          <!-- Avatar dropdown -->
+          <div class="dropdown text-end ms-auto ms-sm-0">
             <a
               href="#"
               class="d-block link-body-emphasis text-decoration-none dropdown-toggle"
@@ -70,7 +106,123 @@
                 class="rounded-circle"
               />
             </a>
-            <ul class="dropdown-menu text-small">
+            <ul class="dropdown-menu dropdown-menu-end text-small">
+              <li><a class="dropdown-item" href="#">New project...</a></li>
+              <li><a class="dropdown-item" href="#">Settings</a></li>
+              <li><a class="dropdown-item" href="#">Profile</a></li>
+              <li><hr class="dropdown-divider" /></li>
+              <li><a class="dropdown-item" href="#">Sign out</a></li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </header>
+
+    <!-- OFFCANVAS SIDEBAR (mobile/tablet) -->
+    <div
+      class="offcanvas offcanvas-start text-bg-secondary"
+      tabindex="-1"
+      id="sidebarOffcanvas"
+      aria-labelledby="sidebarOffcanvasLabel"
+      style="width: 240px;"
+    >
+      <div class="offcanvas-header border-bottom border-secondary">
+        <h5 class="offcanvas-title text-white" id="sidebarOffcanvasLabel">Menu</h5>
+        <button
+          type="button"
+          class="btn-close btn-close-white"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="offcanvas-body d-flex flex-column p-3">
+        <ul class="nav nav-pills flex-column mb-auto">
+          <li class="nav-item">
+            <a href="#" class="nav-link active">Home</a>
+          </li>
+          <li>
+            <a href="#" class="nav-link text-white">Dashboard</a>
+          </li>
+          <li>
+            <a href="#" class="nav-link text-white">Orders</a>
+          </li>
+          <li>
+            <a href="#" class="nav-link text-white">Products</a>
+          </li>
+          <li>
+            <a href="#" class="nav-link text-white">Customers</a>
+          </li>
+        </ul>
+        <hr class="border-secondary" />
+        <div class="dropdown">
+          <a
+            href="#"
+            class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <img
+              src="https://github.com/mdo.png"
+              alt=""
+              width="32"
+              height="32"
+              class="rounded-circle me-2"
+            />
+            <strong>mdo</strong>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
+            <li><a class="dropdown-item" href="#">New project...</a></li>
+            <li><a class="dropdown-item" href="#">Settings</a></li>
+            <li><a class="dropdown-item" href="#">Profile</a></li>
+            <li><hr class="dropdown-divider" /></li>
+            <li><a class="dropdown-item" href="#">Sign out</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- MAIN LAYOUT -->
+    <div class="row g-0">
+
+      <!-- SIDEBAR FIXA (só desktop) -->
+      <aside class="col-lg-2 d-none d-lg-block sidebar">
+        <div class="d-flex flex-column h-100 p-3 text-bg-secondary border-end">
+          <ul class="nav nav-pills flex-column mb-auto">
+            <li class="nav-item">
+              <a href="#" class="nav-link active" aria-current="page">Home</a>
+            </li>
+            <li>
+              <a href="#" class="nav-link text-white">Dashboard</a>
+            </li>
+            <li>
+              <a href="#" class="nav-link text-white">Orders</a>
+            </li>
+            <li>
+              <a href="#" class="nav-link text-white">Products</a>
+            </li>
+            <li>
+              <a href="#" class="nav-link text-white">Customers</a>
+            </li>
+          </ul>
+          <hr class="border-secondary" />
+          <div class="dropdown">
+            <a
+              href="#"
+              class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              <img
+                src="https://github.com/mdo.png"
+                alt=""
+                width="32"
+                height="32"
+                class="rounded-circle me-2"
+              />
+              <strong>mdo</strong>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
               <li><a class="dropdown-item" href="#">New project...</a></li>
               <li><a class="dropdown-item" href="#">Settings</a></li>
               <li><a class="dropdown-item" href="#">Profile</a></li>
@@ -79,324 +231,196 @@
             </ul>
           </div>
         </div>
-      </div>
-    </header>
-    <main>
-      <div class="row">
-        <aside class="col-2" style="min-height: 100vh">
-          <div
-            class="d-flex flex-column h-100 p-3 text-bg-secondary border-end"
-          >
-            <ul class="nav nav-pills flex-column mb-auto">
-              <li class="nav-item">
-                <a href="#" class="nav-link active" aria-current="page">
-                  <svg
-                    class="bi pe-none me-2"
-                    width="16"
-                    height="16"
-                    aria-hidden="true"
-                  >
-                    <use xlink:href="#home"></use>
-                  </svg>
-                  Home
-                </a>
-              </li>
-              <li>
-                <a href="#" class="nav-link text-white">
-                  <svg
-                    class="bi pe-none me-2"
-                    width="16"
-                    height="16"
-                    aria-hidden="true"
-                  >
-                    <use xlink:href="#speedometer2"></use>
-                  </svg>
-                  Dashboard
-                </a>
-              </li>
-              <li>
-                <a href="#" class="nav-link text-white">
-                  <svg
-                    class="bi pe-none me-2"
-                    width="16"
-                    height="16"
-                    aria-hidden="true"
-                  >
-                    <use xlink:href="#table"></use>
-                  </svg>
-                  Orders
-                </a>
-              </li>
-              <li>
-                <a href="#" class="nav-link text-white">
-                  <svg
-                    class="bi pe-none me-2"
-                    width="16"
-                    height="16"
-                    aria-hidden="true"
-                  >
-                    <use xlink:href="#grid"></use>
-                  </svg>
-                  Products
-                </a>
-              </li>
-              <li>
-                <a href="#" class="nav-link text-white">
-                  <svg
-                    class="bi pe-none me-2"
-                    width="16"
-                    height="16"
-                    aria-hidden="true"
-                  >
-                    <use xlink:href="#people-circle"></use>
-                  </svg>
-                  Customers
-                </a>
-              </li>
-            </ul>
-            <hr class="border-secondary" />
-            <div class="dropdown">
-              <a
-                href="#"
-                class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                <img
-                  src="https://github.com/mdo.png"
-                  alt=""
-                  width="32"
-                  height="32"
-                  class="rounded-circle me-2"
-                />
-                <strong>mdo</strong>
-              </a>
-              <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
-                <li><a class="dropdown-item" href="#">New project...</a></li>
-                <li><a class="dropdown-item" href="#">Settings</a></li>
-                <li><a class="dropdown-item" href="#">Profile</a></li>
-                <li><hr class="dropdown-divider" /></li>
-                <li><a class="dropdown-item" href="#">Sign out</a></li>
-              </ul>
-            </div>
-          </div>
-        </aside>
+      </aside>
 
-        <section class="col p-5">
-          <div class="row m-2">
-            <div class="col">
-              <div class="card h-100 text-bg-primary">
-                <div class="card-body">
-                  <h5 class="card-title">Total de Alunos Ativos</h5>
-                  <h1 class="card-text">4</h1>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card h-100 text-bg-success">
-                <div class="card-body">
-                  <h5 class="card-title">Cursos Publicados</h5>
-                  <h1 class="card-text">3</h1>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card h-100 text-bg-warning">
-                <div class="card-body">
-                  <h5 class="card-title">Taxa de Retenção</h5>
-                  <h1 class="card-text">70%</h1>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card h-100 text-bg-danger">
-                <div class="card-body">
-                  <h5 class="card-title">Chamados Abertos</h5>
-                  <h1 class="card-text">2</h1>
-                </div>
-              </div>
-            </div>
-            <div class="alert alert-light mt-5" role="alert">
-              Manutenção programada hoje às 23h
-            </div>
-          </div>
-          <div class="m-2">
-            <table class="table">
-              <thead>
-                <tr>
-                  <th scope="col">ID</th>
-                  <th scope="col">Nome</th>
-                  <th scope="col">Curso</th>
-                  <th scope="col">Status</th>
-                  <th scope="col">Ações</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Mark</td>
-                  <td>Eletro</td>
-                  <td>
-                    <h6><span class="badge text-bg-success">Ativo</span></h6>
-                  </td>
-                  <td>
-                    <button type="button" class="btn btn-info">Editar</button>
-                    <button type="button" class="btn btn-danger">
-                      Remover
-                    </button>
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Jacob</td>
-                  <td>DEV</td>
-                  <td>
-                    <h6><span class="badge text-bg-success">Ativo</span></h6>
-                  </td>
-                  <td>
-                    <button type="button" class="btn btn-info">Editar</button>
-                    <button type="button" class="btn btn-danger">
-                      Remover
-                    </button>
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td>John</td>
-                  <td>ADM</td>
-                  <td>
-                    <h6>
-                      <span class="badge text-bg-secondary">Inativo</span>
-                    </h6>
-                  </td>
-                  <td>
-                    <button type="button" class="btn btn-info">Editar</button>
-                    <button type="button" class="btn btn-danger">
-                      Remover
-                    </button>
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">4</th>
-                  <td>Motta</td>
-                  <td>MEC</td>
-                  <td>
-                    <h6>
-                      <span class="badge text-bg-secondary">Inativo</span>
-                    </h6>
-                  </td>
-                  <td>
-                    <button type="button" class="btn btn-info">Editar</button>
-                    <button type="button" class="btn btn-danger">
-                      Remover
-                    </button>
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">5</th>
-                  <td>Jeff</td>
-                  <td>LOG</td>
-                  <td>
-                    <h6>
-                      <span class="badge text-bg-secondary">Inativo</span>
-                    </h6>
-                  </td>
-                  <td>
-                    <button type="button" class="btn btn-info">Editar</button>
-                    <button type="button" class="btn btn-danger">
-                      Remover
-                    </button>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-            <nav aria-label="Page navigation example">
-              <ul class="pagination">
-                <li class="page-item">
-                  <a class="page-link" href="#">Previous</a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                  <a class="page-link" href="#">Next</a>
-                </li>
-              </ul>
-            </nav>
-          </div>
-          <button
-            type="button"
-            class="btn btn-dark"
-            data-bs-toggle="modal"
-            data-bs-target="#criarAluno"
-          >
-            Cadastrar Novo Aluno
-          </button>
-        </section>
-      </div>
+      <!-- CONTEÚDO PRINCIPAL -->
+      <section class="col p-3 p-md-4 p-lg-5">
 
-      <!-- Modal -->
-      <div
-        class="modal fade"
-        id="criarAluno"
-        tabindex="-1"
-        aria-labelledby="exampleModalLabel"
-        aria-hidden="true"
-      >
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h1 class="modal-title fs-5" id="exampleModalLabel">
-                Criar Aluno
-              </h1>
-              <button
-                type="button"
-                class="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
+        <!-- Cards de métricas: 2 colunas em tablet, 1 em mobile, 4 em desktop -->
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-xl-4 g-3 mb-4">
+          <div class="col">
+            <div class="card h-100 text-bg-primary">
+              <div class="card-body">
+                <h5 class="card-title">Total de Alunos Ativos</h5>
+                <h1 class="card-text">4</h1>
+              </div>
             </div>
-            <div class="modal-body">
-              <form>
-                <div class="mb-3">
-                  <label for="exampleInputEmail1" class="form-label"
-                    >Nome Completo</label
-                  >
-                  <input type="text" class="form-control" id="nome" />
-                </div>
-                <div class="mb-3">
-                  <label for="Select" class="form-label">Curso</label>
-                  <select id="Select" class="form-select">
-                    <option>Selecione uma opção</option>
-                    <option>Eletro</option>
-                    <option>ADM</option>
-                    <option>MEC</option>
-                  </select>
-                </div>
-                <div class="mb-3">
-                  <label for="arquivo" class="form-label"
-                    >Upload de arquivo</label
-                  >
-                  <input type="file" class="form-control" id="arquivo" />
-                </div>
-              </form>
+          </div>
+          <div class="col">
+            <div class="card h-100 text-bg-success">
+              <div class="card-body">
+                <h5 class="card-title">Cursos Publicados</h5>
+                <h1 class="card-text">3</h1>
+              </div>
             </div>
-            <div class="modal-footer">
-              <button
-                type="button"
-                class="btn btn-secondary"
-                data-bs-dismiss="modal"
-              >
-                Close
-              </button>
-              <button type="button" class="btn btn-primary">
-                Save changes
-              </button>
+          </div>
+          <div class="col">
+            <div class="card h-100 text-bg-warning">
+              <div class="card-body">
+                <h5 class="card-title">Taxa de Retenção</h5>
+                <h1 class="card-text">70%</h1>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card h-100 text-bg-danger">
+              <div class="card-body">
+                <h5 class="card-title">Chamados Abertos</h5>
+                <h1 class="card-text">2</h1>
+              </div>
             </div>
           </div>
         </div>
+
+        <!-- Alerta -->
+        <div class="alert alert-light mb-4" role="alert">
+          Manutenção programada hoje às 23h
+        </div>
+
+        <!-- Tabela com scroll horizontal em mobile -->
+        <div class="table-responsive mb-3">
+          <table class="table table-hover align-middle">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Curso</th>
+                <th scope="col">Status</th>
+                <th scope="col">Ações</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Eletro</td>
+                <td><span class="badge text-bg-success">Ativo</span></td>
+                <td>
+                  <button type="button" class="btn btn-info btn-sm me-1">Editar</button>
+                  <button type="button" class="btn btn-danger btn-sm">Remover</button>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>Jacob</td>
+                <td>DEV</td>
+                <td><span class="badge text-bg-success">Ativo</span></td>
+                <td>
+                  <button type="button" class="btn btn-info btn-sm me-1">Editar</button>
+                  <button type="button" class="btn btn-danger btn-sm">Remover</button>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>John</td>
+                <td>ADM</td>
+                <td><span class="badge text-bg-secondary">Inativo</span></td>
+                <td>
+                  <button type="button" class="btn btn-info btn-sm me-1">Editar</button>
+                  <button type="button" class="btn btn-danger btn-sm">Remover</button>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">4</th>
+                <td>Motta</td>
+                <td>MEC</td>
+                <td><span class="badge text-bg-secondary">Inativo</span></td>
+                <td>
+                  <button type="button" class="btn btn-info btn-sm me-1">Editar</button>
+                  <button type="button" class="btn btn-danger btn-sm">Remover</button>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">5</th>
+                <td>Jeff</td>
+                <td>LOG</td>
+                <td><span class="badge text-bg-secondary">Inativo</span></td>
+                <td>
+                  <button type="button" class="btn btn-info btn-sm me-1">Editar</button>
+                  <button type="button" class="btn btn-danger btn-sm">Remover</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Paginação -->
+        <nav aria-label="Navegação de páginas" class="mb-4">
+          <ul class="pagination pagination-sm">
+            <li class="page-item">
+              <a class="page-link" href="#">Previous</a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item">
+              <a class="page-link" href="#">Next</a>
+            </li>
+          </ul>
+        </nav>
+
+        <!-- Botão cadastrar -->
+        <button
+          type="button"
+          class="btn btn-dark w-100 w-sm-auto"
+          data-bs-toggle="modal"
+          data-bs-target="#criarAluno"
+        >
+          Cadastrar Novo Aluno
+        </button>
+
+      </section>
+    </div>
+
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="criarAluno"
+      tabindex="-1"
+      aria-labelledby="criarAlunoLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="criarAlunoLabel">Criar Aluno</h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="mb-3">
+                <label for="nome" class="form-label">Nome Completo</label>
+                <input type="text" class="form-control" id="nome" />
+              </div>
+              <div class="mb-3">
+                <label for="Select" class="form-label">Curso</label>
+                <select id="Select" class="form-select">
+                  <option>Selecione uma opção</option>
+                  <option>Eletro</option>
+                  <option>ADM</option>
+                  <option>MEC</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label for="arquivo" class="form-label">Upload de arquivo</label>
+                <input type="file" class="form-control" id="arquivo" />
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+              Fechar
+            </button>
+            <button type="button" class="btn btn-primary">Salvar</button>
+          </div>
+        </div>
       </div>
-    </main>
+    </div>
 
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
