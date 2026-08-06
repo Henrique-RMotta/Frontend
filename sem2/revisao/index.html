@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+<body class="">
+    <header class="bg-primary text-white p-3 d-flex flex-row justify-content-between">
+        <img src="" alt="">
+        <h1 class="text-center">Dashboard</h1>
+        <div>
+            <p>Status: <span class="badge text-white" id="status"></span></p>
+        </div>
+    </header>
+
+    <main class="d-flex  m-5 flex-column gap-4 min-vh-100">
+        <section class="d-flex flex-row gap-5 ">
+            <button onclick="atualizarSensores()" class="btn btn-warning shadow-sm ">Atualizar Dados</button>
+            <select  id="opcaoSensor"  class="form-select shadow-sm">
+                <option selected>Escolha algum sensor</option>
+                <option value="Temperatura">Temperatura</option>
+                <option value="Umidade">Umidade</option>
+                <option value="Pressão">Pressão</option>
+                <option value="Todas">Todas</option>
+            </select>
+        </section>
+        <section class="container text-center shadow-sm">
+            <div class="row gap-3" id="grid-sensores">
+                <!-- sensores  -->
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-primary text-white p-3 d-flex flex-column justify-content-center">
+        <p>Feito por Henrique Motta 4DEVT</p>
+        <p>Ultima Atualização <span class="badge text-black bg-light" id="horario"></span></p>
+    </footer>
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+     <script src="script.js"></script>
+</head>
+</body>
+</html>
